@@ -1,0 +1,27 @@
+#!/usr/bin/expect
+set timeout 20
+spawn python3 desdm_eupsinstall_3.7.py
+expect -re {\/eeups\/eups} 
+send "\r"
+expect -re {\/eeups\/eups\/packages}
+send "\r"
+expect -re {\/usr\/bin\/gcc}
+send "\r"
+expect -re {\/usr\/bin\/g\+\+}
+send "\r"
+expect -re {\/usr\/bin\/gfortran}
+send "\r"
+expect -re {no}
+send "\r"
+expect -re {yes}
+send "\r"
+expect -re {yes}
+send "\r"
+expect -re {no}
+send "\r"
+expect -re {yes}
+send "\r"
+expect -re {Thanks for installing the DESDM EUPS.}
+send "\r"
+interact
+

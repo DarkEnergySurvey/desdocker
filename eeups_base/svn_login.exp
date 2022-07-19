@@ -1,0 +1,10 @@
+#!/usr/bin/expect -f 
+spawn svn info --username anonymous --password anonymous $env(SVNROOT)
+expect -re {(p)ermanently\?} 
+send "p\r"
+expect -re {\(yes\/no\)\?}
+send "yes\r"
+expect -re {Last Changed Date:}
+send "\r"
+interact
+
