@@ -15,7 +15,7 @@ RUN yum install -y \
         wget \
         unzip \
         zlib zlib-devel libffi-devel \
-        bzip2 bzip2-devel \ 
+        bzip2 bzip2-devel \
         freetype freetype-devel \
         libX11 libX11-devel \
         libXau libXau-devel \
@@ -74,14 +74,20 @@ ADD desdm_eupsinstall_3.7.py /eeups/
 WORKDIR $EEUPS_DIR
 
 #RUN wget http://desdev3.cosmology.illinois.edu/desdm_eupsinstall.py
-RUN ["/bin/bash", "-c", "/eeups/install_eeups.exp"] 
+RUN ["/bin/bash", "-c", "/eeups/install_eeups.exp"]
 
 
 ADD svn_login.exp /eeups/
 ADD svn_desweb_alias_login.exp /eeups/
-RUN ["/bin/bash", "-l", "-c", "env"] 
-RUN ["/bin/bash", "-l", "-c", "/eeups/svn_login.exp"] 
-RUN ["/bin/bash", "-l", "-c", "/eeups/svn_desweb_alias_login.exp"] 
+RUN ["/bin/bash", "-l", "-c", "env"]
+RUN ["/bin/bash", "-l", "-c", "/eeups/svn_login.exp"]
+RUN ["/bin/bash", "-l", "-c", "/eeups/svn_desweb_alias_login.exp"]
+
+# Configure openblas
+RUN mkdir -p ${HOME}/.des/openblas && \
+    echo CC=gcc > ${HOME}/.des/openblas/Makefile.rule && \
+    echo FC=gfortran >> ${HOME}/.des/openblas/Makefile.rule && \
+    echo TARGET=NEHALEM >> ${HOME}/.des/openblas/Makefile.rule && \
+    echo NUM_THREADS=32 >> ${HOME}/.des/openblas/Makefile.rule
 
 WORKDIR /home/$EEUPS_USER
-
