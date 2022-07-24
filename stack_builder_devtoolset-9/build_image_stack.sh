@@ -16,7 +16,7 @@ prod_name=$(echo $PRODUCT_NAME | tr '[:upper:]' '[:lower:]')
 # The image name, replace the "+" by "_"
 export IMAGE="desdm/${prod_name}:${PRODUCT_VERSION/+/_}"
 
-docker build build  \
+docker build \
        -t $IMAGE \
        --build-arg PRODUCT_NAME \
        --build-arg PRODUCT_VERSION \
