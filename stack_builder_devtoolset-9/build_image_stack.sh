@@ -22,6 +22,9 @@ docker build -f . \
        --build-arg PRODUCT_VERSION \
        --rm=true .
 
+       #       --no-cache \
+
+
 echo 'Push commands:'
 echo "   docker push $IMAGE"
 

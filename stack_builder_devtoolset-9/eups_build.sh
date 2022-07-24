@@ -24,6 +24,9 @@ then
 fi
 echo "echo \"Will install $PRODUCT_NAME_FULL\"" >> ${install_file}
 echo "source /eeups/eups/desdm_eups_setup.sh" >> ${install_file}
+echo "export CC=/opt/rh/devtoolset-9/root/usr/bin/gcc" >> ${install_file}
+echo "export CXX=/opt/rh/devtoolset-9/root/usr/bin/g++" >> ${install_file}
+echo "export GFORTRAN=/opt/rh/devtoolset-9/root/usr/bin/gfortran" >> ${install_file}
 echo "eups distrib install --nolocks ${product} ${version}"  >> ${install_file}
 echo "exit"  >> ${install_file}
 chmod +x ${install_file}
