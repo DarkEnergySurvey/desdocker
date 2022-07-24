@@ -1,8 +1,6 @@
 # This Dockerfile configures the basic centos7 image containing an empty eeups
 # installation and read-only access to DESDM svn.
 FROM centos:centos7
-LABEL maintainer="Michael Graber<michael.graber@fhnw.ch>"
-
 
 USER root
 
@@ -40,7 +38,6 @@ RUN yum install -y \
 RUN yum clean all
 
 
-
 # INSTALL DESDM EEUPS ---------------------------------------------------------
 
 # configure environment
@@ -59,12 +56,12 @@ RUN useradd -m -s /bin/bash -N -u $EEUPS_UID $EEUPS_USER && \
     chown $EEUPS_USER $EEUPS_DIR
 
 WORKDIR /usr/src
-RUN wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz
-RUN tar xzf Python-3.7.0.tgz
+RUN wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tgz && \
+    tar xzf Python-3.7.0.tgz
 WORKDIR /usr/src/Python-3.7.0
-RUN ./configure --enable-shared --prefix=/usr LDFLAGS="-Wl,--rpath=/usr/lib"
-RUN make
-RUN make install
+RUN ./configure --enable-shared --prefix=/usr LDFLAGS="-Wl,--rpath=/usr/lib" && \
+    make && \
+    make install
 
 USER $EEUPS_USER
 
