@@ -3,10 +3,17 @@
 # Capture $DOCKER_IMAGE from the ARGV
 DOCKER_IMAGE=$1
 
-# Get the IMAGE via docker pull
-echo "# Pulling ${DOCKER_IMAGE}"
-echo "#"
-docker pull $DOCKER_IMAGE
+# Get the IMAGE via docker pull if not present locally
+answer=`docker image inspect $DOCKER_IMAGE --format="yes"`
+echo "Answer is:$answer"
+
+if [ $answer ]; then
+  echo "Found $IMAGE_NAME locally"
+else
+  echo "# Pulling ${DOCKER_IMAGE}"
+  echo "#"
+  docker pull $DOCKER_IMAGE
+fi;
 
 # Replace ':' by '-'
 SING_IMAGE=${DOCKER_IMAGE//:/-}
