@@ -29,3 +29,11 @@ echo "#   singularity build ${SING_IMAGE}.sif docker-archive://${SING_IMAGE}.tar
 
 docker save ${DOCKER_IMAGE}  -o ./${SING_IMAGE}.tar
 singularity build ${SING_IMAGE}.sif docker-archive://${SING_IMAGE}.tar
+
+# Build a sandbox
+# singularity build  --fix-perms --sandbox ${SING_IMAGE}_sandbox  docker-archive://${SING_IMAGE}.tar
+# tar -cf ${SING_IMAGE}_sandbox.tar ${SING_IMAGE}_sandbox
+
+# Remove the tar file and sandbox directory:
+#rm ${SING_IMAGE}.tar
+#rm ${SING_IMAGE}_sandbox
