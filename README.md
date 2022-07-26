@@ -5,7 +5,7 @@ This repo is adapted from `docker_utils` on bitbucket
 It contains the files and build scripts to install eups from scratch and generate a base image only containing
 eeups and its prerequisites on top of a **centos7** os. This eups image base will be used to generate new Docker images with eups stacks and singularity images based on this. There is a read-only svn user for desdm svn repository pre-configured.
 
-## Create eeups_base docker image
+## Create eups_base docker image
 
 The docker image base can be created like this
 ```
