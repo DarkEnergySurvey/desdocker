@@ -10,7 +10,7 @@ eeups and its prerequisites on top of a **centos7** os. This eups image base wil
 The docker image base can be created like this
 ```
 cd eups_base
-docker build . --tag=desdm/eeups_base
+docker build . --tag=desdm/eups_base
 ```
 or simply by running the script:
 ```
