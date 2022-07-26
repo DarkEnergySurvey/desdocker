@@ -28,3 +28,28 @@ To run a container with an interactive bash shell from it use
 ```
 docker run -it desdm/eups_base /bin/bash -l
 ```
+
+## Create docker and singularity eups stack using image base
+
+To create a custom stack we use the `build_image_stack.sh` and the `docker2singularity` scrips.
+For example, to create a stack with `MEPipeline Y6A2+9` using the `devtoolset-9` environment
+
+```
+cd stack_builder_devtoolset-9
+./build_image_stack.sh MEPipeline Y6A2+9
+```
+
+Push the image (optional)
+``` 
+docker push desdm/mepipeline:Y6A2_9
+```
+Create the singularity image
+
+```
+./docker2singularity desdm/mepipeline:Y6A2_9
+```
+
+This will create a `sif` image: `mepipeline-Y6A2_9.sif` that should be moved to the library location: `/work/devel/eeups/resources/singularity
+`
+
+
