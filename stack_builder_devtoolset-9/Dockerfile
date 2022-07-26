@@ -1,4 +1,4 @@
-FROM desdm/eeups_base:latest
+FROM desdm/eups_base
 
 USER root
 

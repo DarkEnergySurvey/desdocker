@@ -1,9 +1,9 @@
 #/usr/bin/env bash
 
-IMAGE=desdm/eeups_base
-TAG=latest
+IMAGE=desdm/eups_base
+#TAG=latest
 
-IMAGE_NAME=${IMAGE}:${TAG}
+IMAGE_NAME=${IMAGE} #:${TAG}
 
 docker build . \
        -t ${IMAGE_NAME}
