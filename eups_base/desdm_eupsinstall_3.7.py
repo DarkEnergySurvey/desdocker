@@ -615,7 +615,7 @@ def mk_bashscript(eups_install_path, flavor, compiler_cc, compiler_cxx, compiler
              "export CXX=%s" % compiler_cxx,
              "export GFORTRAN=%s" % compiler_gfortran,
              "#",
-             "export EUPS_PKGROOT=http://desbuild2.cosmology.illinois.edu/eeups/webservice/repository",
+             "export EUPS_PKGROOT=http://descmp1.cosmology.illinois.edu/eeups/webservice/repository",
              "export SVNROOT=https://dessvn.cosmology.illinois.edu/svn/desdm/devel",
              "source %s/bin/setups.sh" % eups_install_path,
     ]
@@ -677,7 +677,7 @@ def mk_cshscript(eups_install_path, flavor, compiler_cc, compiler_cxx, compiler_
              "setenv CXX %s" % compiler_cxx,
              "setenv GFORTRAN %s" % compiler_gfortran,
              "#",
-             "setenv EUPS_PKGROOT http://desbuild2.cosmology.illinois.edu/eeups/webservice/repository",
+             "setenv EUPS_PKGROOT http://descmp1.cosmology.illinois.edu/eeups/webservice/repository",
              "setenv SVNROOT https://dessvn.cosmology.illinois.edu/svn/desdm/devel",
              "source %s/bin/setups.csh" % eups_install_path,
     ]
@@ -744,9 +744,9 @@ def main():
     tmpdir = make_tmp_dir()
     change_dir(tmpdir, "temporary directory")
     if environment['use_curl']:
-        run_command("curl -O http://desbuild2.cosmology.illinois.edu/eeups/webservice/resources/eups/eups-.tar.gz", "Downloading EUPS")
+        run_command("curl -O http://descmp1.cosmology.illinois.edu/eeups/webservice/resources/eups/eups-.tar.gz", "Downloading EUPS")
     else:
-        run_command("wget http://desbuild2.cosmology.illinois.edu/eeups/webservice/resources/eups/eups-1.2.31.tar.gz", "Downloading EUPS")
+        run_command("wget http://descmp1.cosmology.illinois.edu/eeups/webservice/resources/eups/eups-1.2.31.tar.gz", "Downloading EUPS")
     run_command("tar xzf eups-1.2.31.tar.gz", "Unpacking EUPS")
     change_dir(os.path.join(tmpdir, "eups-1.2.31"), "unpacked directory")
     makedirs(paths["eups"], "EUPS installation directory")
